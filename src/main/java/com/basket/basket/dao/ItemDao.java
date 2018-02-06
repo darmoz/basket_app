@@ -13,6 +13,8 @@ public interface ItemDao extends CrudRepository<Item, Long> {
     @Override
     Optional<Item> findById(Long id);
 
+    Optional<Item> findByName(String name);
+
     @Override
     void delete(Item item);
 }

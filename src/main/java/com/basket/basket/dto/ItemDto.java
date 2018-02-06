@@ -1,16 +1,21 @@
 package com.basket.basket.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Service;
 
 @Getter
+@Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class ItemDto {
     private long itemId;
     private String name;
     private double price;
-    private int unit;
+
+    public ItemDto(final String name, final double price) {
+        this.name=name;
+        this.price=price;
+    }
 
 }

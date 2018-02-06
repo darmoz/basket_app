@@ -9,18 +9,14 @@ public class ItemMapper {
 
     public Item mapItem(final ItemDto itemDto) {
         return new Item(
-            itemDto.getItemId(),
             itemDto.getName(),
-            itemDto.getPrice(),
-            itemDto.getUnit()
+            itemDto.getPrice()
         );
     }
     public ItemDto mapItemDto(final Item item) {
         return new ItemDto(
-                item.getItemId(),
                 item.getName(),
-                item.getPrice(),
-                item.getUnit()
+                item.getPrice()
         );
     }
 
