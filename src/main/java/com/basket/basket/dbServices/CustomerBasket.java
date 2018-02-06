@@ -1,5 +1,6 @@
 package com.basket.basket.dbServices;
 
+import com.basket.basket.domain.BasketItems;
 import com.basket.basket.domain.Item;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import java.util.List;
 public class CustomerBasket {
 
         private static CustomerBasket customerBasketInstance = null;
-        List<Item> itemList = new ArrayList<>();
+        List<BasketItems> basket = new ArrayList<>();
 
         private CustomerBasket() {
         }
@@ -23,11 +24,11 @@ public class CustomerBasket {
             return customerBasketInstance;
         }
 
-        public Item getEntry(int i) {return itemList.get(i);}
+        public BasketItems getEntry(int i) {return basket.get(i);}
 
 
-        public void addEntry(Item item) {
-            itemList.add(item);
+        public void addEntry(BasketItems basketItems) {
+            basket.add(basketItems);
 
 
     }
