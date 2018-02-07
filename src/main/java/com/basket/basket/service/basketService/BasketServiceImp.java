@@ -30,6 +30,7 @@ public class BasketServiceImp implements BasketService {
     private BasketItemsMapper basketItemsMapper;
     @Autowired
     private ItemDao itemDao;
+    
 
     @Override
     public Basket saveBasket(BasketDto basketdto) {
@@ -39,8 +40,8 @@ public class BasketServiceImp implements BasketService {
     @Override
     public void addToBasket(BasketItemsDto basketItemsDto) {
         Basket basket = basketDao.findBasketByBasketId(basketItemsMapper.mapToBasketItems(basketItemsDto).getBasket().getBasketId());
-        Item item = itemDao.findByItemId(basketItemsMapper.mapToBasketItems(basketItemsDto).getItem().getId());
-        basket.getBasketItemsList().add(new BasketItems(basket, item, basketItemsDto.getQuantity()));
+        Item item = itemDao.findByItemId(basketItemsMapper.mapToBasketItems(basketItemsDto).getItem().getItemId());
+        basket.getBasketItemsList().add(new BasketItems(id, basket, item, basketItemsDto.getQuantity()));
         basketDao.save(basket);
 
     }

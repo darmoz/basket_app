@@ -15,8 +15,8 @@ public class BasketItemsDto {
     private Basket basket;
     private Item item;
 
-    public BasketItemsDto(final Basket basket, final Item item, final int quantity) {
-
+    public BasketItemsDto(final long basketItemsId, final Basket basket, final Item item, final int quantity) {
+        this.basketItemId=basketItemsId;
         this.quantity=quantity;
         this.basket=basket;
         this.item=item;

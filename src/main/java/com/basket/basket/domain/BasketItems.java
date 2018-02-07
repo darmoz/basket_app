@@ -24,7 +24,8 @@ public class BasketItems {
     @JoinColumn(name = "itemId")
     private Item item;
 
-    public BasketItems(final Basket basket, final Item item, final int quantity) {
+    public BasketItems(final long basketItemsId, final Basket basket, final Item item, final int quantity) {
+        this.basketItemsId=basketItemsId;
         this.quantity=quantity;
         this.basket=basket;
         this.item=item;

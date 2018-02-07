@@ -22,13 +22,14 @@ public class Item {
     @Column(name = "UNIT")
     private int unit;
 
-    public Item(final String name, final BigDecimal price, final int unit) {
+    public Item(final long itemId, final String name, final BigDecimal price, final int unit) {
+        this.itemId=itemId;
         this.name=name;
         this.price=price;
         this.unit=unit;
     }
 
-    public long getId() {
+    public long getItemId() {
         return itemId;
     }
 

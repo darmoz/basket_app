@@ -8,10 +8,19 @@ import org.springframework.stereotype.Component;
 public class BasketMapper {
 
     public Basket mapToBasket(final BasketDto basketDto) {
-        return new Basket();
+
+        return new Basket(
+                basketDto.getBasketId(),
+                basketDto.getSubtotal(),
+                basketDto.getCreationDate()
+        );
     }
 
     public BasketDto mapToBasketDto(final Basket basket) {
-        return new BasketDto();
+        return new BasketDto(
+                basket.getBasketId(),
+                basket.getSubtotal(),
+                basket.getCreationDate()
+        );
     }
 }

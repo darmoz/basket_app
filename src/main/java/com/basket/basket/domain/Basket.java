@@ -28,8 +28,10 @@ public class Basket {
             fetch = FetchType.LAZY)
     private List<BasketItems> basketItemsList;
 
-    public Basket() {
-        creationDate = new Date();
+    public Basket(final long basketId, final BigDecimal subtotal, final Date creationDate) {
+        this.basketId=basketId;
+        this.subtotal=subtotal;
+        this.creationDate=new Date();
         basketItemsList = new ArrayList<>();
     }
 

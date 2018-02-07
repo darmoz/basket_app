@@ -1,34 +1,28 @@
 package com.basket.basket.service.discount;
 
-import com.basket.basket.dao.BasketItemsDao;
-import com.basket.basket.domain.Basket;
 import com.basket.basket.domain.BasketItems;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
-import java.util.Optional;
+
 
 public class MilkDiscountDecorator extends AbstractCustomerCost {
 
-    @Autowired
-    private Optional<BasketItems>  basketItems;
-    @Autowired
-    private BasketItemsDao basketItemsDao;
 
-    private BigDecimal discountedCost;
+    private BasketItems basketItems;
 
     protected MilkDiscountDecorator(CustomerCost customerCost) {
         super(customerCost);
     }
     @Override
     public BigDecimal cost() {
-        basketItems = basketItemsDao.findById(basketItems.get().getBasketItemId());
-        if(basketItems.get().getItem().getName().equals("milk") && basketItems.get().getQuantity()>=70) {
-            discountedCost = super.cost().subtract((new BigDecimal(basketItems.get().getQuantity())
-                    .multiply(basketItems.get().getItem().getPrice()))
+        if(basketItems.getItem().getName().equals("milk") && basketItems.getQuantity()>=70) {
+            return super.cost().subtract((new BigDecimal(basketItems.getQuantity())
+                    .multiply(basketItems.getItem().getPrice()))
                     .multiply(new BigDecimal(0.1)));
+        } else {
+            return null;
         }
-        return discountedCost;
+
     }
 
     @Override

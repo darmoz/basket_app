@@ -41,12 +41,12 @@ public class ItemControllerTestSuite {
     @Test
     public void getItem() throws Exception {
         //given
-        Item item = new Item("milk",new BigDecimal(2.5), 10);
+        Item item = new Item(1L,"milk",new BigDecimal(2.5), 10);
         item.setItemId(1L);
-        ItemDto itemDto = new ItemDto("milk", new BigDecimal(2.5), 10);
-        itemDto.setId(1L);
+        ItemDto itemDto = new ItemDto(1L,"milk",new BigDecimal(2.5), 10);
+        itemDto.setItemId(1L);
         //when & then
-        when(dbService.getItemById(item.getId())).thenReturn(Optional.ofNullable(item));
+        when(dbService.getItemById(item.getItemId())).thenReturn(Optional.ofNullable(item));
         when(itemMapper.mapItemDto(item)).thenReturn(itemDto);
 
         mockMvc.perform(get("/v1/item/getItem?itemId={itemId}", 1L)
@@ -60,11 +60,11 @@ public class ItemControllerTestSuite {
     @Test
     public void testDeleteItem() throws Exception {
         //given
-        Item item = new Item("milk",new BigDecimal(2.5),10);
+        Item item = new Item(1L,"milk",new BigDecimal(2.5), 10);
         item.setItemId(1L);
-        ItemDto itemDto = new ItemDto("milk", new BigDecimal(2.5), 10);
-        itemDto.setId(1L);
-        when(dbService.getItemById(item.getId())).thenReturn(Optional.ofNullable(item));
+        ItemDto itemDto = new ItemDto(1L,"milk",new BigDecimal(2.5), 10);
+        itemDto.setItemId(1L);
+        when(dbService.getItemById(item.getItemId())).thenReturn(Optional.ofNullable(item));
         doNothing().when(dbService).deleteItem(item);
         //when & then
         mockMvc.perform(delete("/v1/item/deleteItem?id={id}", 1L)
