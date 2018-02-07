@@ -1,18 +1,27 @@
 package com.basket.basket.service.discount;
 
 import com.basket.basket.domain.Basket;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 
 public class StandardCost implements CustomerCost {
 
-    @Autowired
-    private Basket basket;
+    private static final Logger LOGGER = LoggerFactory.getLogger(StandardCost.class);
+
+   private Basket basket;
+
+   public StandardCost(final Basket basket) {
+       this.basket=basket;
+   }
 
     @Override
     public BigDecimal cost() {
-        return basket.calculateTotal();
+
+       LOGGER.info("Calculate cost of the basket");
+       return basket.calculateTotal();
     }
 
     @Override

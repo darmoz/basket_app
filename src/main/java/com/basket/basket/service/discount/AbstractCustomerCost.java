@@ -1,5 +1,8 @@
 package com.basket.basket.service.discount;
 
+import com.basket.basket.domain.Basket;
+import com.basket.basket.domain.BasketItems;
+
 import java.math.BigDecimal;
 
 public abstract class AbstractCustomerCost implements CustomerCost {

@@ -5,20 +5,18 @@ import com.basket.basket.dto.BasketItemsDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BasketItemsMapper {
+public class BasketItemMapperNoId {
 
-    public BasketItems mapToBasketItems(final BasketItemsDto basketItemsDto) {
+    public BasketItems mapToBasketItemsNoId(final BasketItemsDto basketItemsDto) {
         return new BasketItems(
-                basketItemsDto.getBasketItemId(),
                 basketItemsDto.getBasket(),
                 basketItemsDto.getItem(),
                 basketItemsDto.getQuantity()
-                );
+        );
     }
 
-    public BasketItemsDto mapToBasketItemsDto(final BasketItems basketItems) {
+    public BasketItemsDto mapToBasketItemsNoIdDto(final BasketItems basketItems) {
         return new BasketItemsDto(
-                basketItems.getBasketItemId(),
                 basketItems.getBasket(),
                 basketItems.getItem(),
                 basketItems.getQuantity()

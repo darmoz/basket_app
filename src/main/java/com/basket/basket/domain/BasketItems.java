@@ -31,6 +31,12 @@ public class BasketItems {
         this.item=item;
     }
 
+    public BasketItems(final Basket basket, final Item item, final int quantity) {
+        this.quantity=quantity;
+        this.basket=basket;
+        this.item=item;
+    }
+
     public long getBasketItemId() {
         return basketItemsId;
     }

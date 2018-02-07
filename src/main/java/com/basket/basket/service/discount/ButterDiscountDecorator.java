@@ -6,14 +6,13 @@ import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 
+public class ButterDiscountDecorator extends AbstractCustomerCost {
 
-public class MilkDiscountDecorator extends AbstractCustomerCost {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MilkDiscountDecorator.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ButterDiscountDecorator.class);
 
     private BasketItems basketItems;
 
-    protected MilkDiscountDecorator(CustomerCost customerCost, BasketItems basketItems) {
+    protected ButterDiscountDecorator(CustomerCost customerCost, BasketItems basketItems) {
         super(customerCost);
         this.basketItems=basketItems;
     }
@@ -21,11 +20,11 @@ public class MilkDiscountDecorator extends AbstractCustomerCost {
     @Override
     public BigDecimal cost() {
 
-        LOGGER.info("Discount for milk has been included");
-        if(basketItems.getItem().getName().equals("milk") && basketItems.getQuantity()>=70) {
+        LOGGER.info("Discount for butter has been included");
+        if(basketItems.getItem().getName().equals("butter") && basketItems.getQuantity()>=10) {
             return super.cost().subtract((new BigDecimal(basketItems.getQuantity())
                     .multiply(basketItems.getItem().getPrice()))
-                    .multiply(new BigDecimal(0.1)));
+                    .multiply(new BigDecimal(0.01)));
         } else {
             return null;
         }
@@ -34,7 +33,6 @@ public class MilkDiscountDecorator extends AbstractCustomerCost {
 
     @Override
     public String description() {
-        return " - [10% of milk price]";
+        return " - [1% of butter price]";
     }
-
 }

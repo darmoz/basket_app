@@ -21,4 +21,10 @@ public class BasketItemsDto {
         this.basket=basket;
         this.item=item;
     }
+
+    public BasketItemsDto( final Basket basket, final Item item, final int quantity) {
+        this.quantity=quantity;
+        this.basket=basket;
+        this.item=item;
+    }
 }
