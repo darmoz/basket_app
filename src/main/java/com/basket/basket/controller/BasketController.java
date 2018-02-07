@@ -19,8 +19,8 @@ public class BasketController {
     private DbService dbService;
 
     @RequestMapping(method = RequestMethod.GET, value = "getBasket")
-    public BasketDto getBasket(@RequestParam Long BasketId) throws ItemNotFoundException {
-        return basketMapper.mapToBasketDto(dbService.getBasketById(BasketId)
+    public BasketDto getBasket(@RequestParam Long basketId) throws ItemNotFoundException {
+        return basketMapper.mapToBasketDto(dbService.getBasketById(basketId)
                 .orElseThrow(ItemNotFoundException::new));}
 
     @RequestMapping(method = RequestMethod.POST, value = "createBasket", consumes = APPLICATION_JSON_VALUE)

@@ -13,27 +13,36 @@ import javax.persistence.*;
 @Entity(name = "BASKET_ITEMS")
 public class BasketItems {
     @Id
-    @GeneratedValue
-    @Column(name = "ID")
-    private long Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long basketItemsId;
     @Column(name = "QUANTITY")
     private int quantity;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "basketId")
     private Basket basket;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "itemId")
+    private Item item;
 
-    public BasketItems(final int quantity) {
+    public BasketItems(final Basket basket, final Item item, final int quantity) {
         this.quantity=quantity;
+        this.basket=basket;
+        this.item=item;
     }
 
     public long getBasketItemId() {
-        return Id;
+        return basketItemsId;
     }
 
     public int getQuantity() {
         return quantity;
     }
-    @ManyToOne
-    @JoinColumn(name = "BASKET_ID")
+
     public Basket getBasket() {
         return basket;
+    }
+
+    public Item getItem() {
+        return item;
     }
 }

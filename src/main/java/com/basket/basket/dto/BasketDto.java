@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class BasketDto {
-    private long Id;
+    private long basketId;
     private Date creationDate;
+    private BigDecimal subtotal;
     private List<BasketItems> basketItemsList = new ArrayList<>();
 }

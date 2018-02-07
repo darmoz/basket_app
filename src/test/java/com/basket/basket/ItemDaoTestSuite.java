@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigDecimal;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ItemDaoTestSuite {
@@ -18,10 +20,10 @@ public class ItemDaoTestSuite {
     @Test
     public void testGetItemById() {
         //given
-        Item item = new Item("milk",2.5);
+        Item item = new Item("milk",new BigDecimal(2.5), 200);
         itemDao.save(item);
         //when
-        long id = itemDao.findByName("milk").get().getItemId();
+        long id = itemDao.findByName("milk").get().getId();
         String name = itemDao.findById(id).get().getName();
         //then
         Assert.assertEquals(item.getName(), name);
@@ -31,12 +33,12 @@ public class ItemDaoTestSuite {
     @Test
     public void testGetItemByName() {
         //given
-        Item item = new Item("milk",2.5);
+        Item item = new Item("milk", new BigDecimal(2.5), 200);
         itemDao.save(item);
         //when
-        long id = itemDao.findByName("milk").get().getItemId();
+        long id = itemDao.findByName("milk").get().getId();
         //then
-        Assert.assertEquals(item.getItemId(), id);
+        Assert.assertEquals(item.getId(), id);
         //clean up
         itemDao.delete(item);
     }
@@ -44,7 +46,7 @@ public class ItemDaoTestSuite {
     @Test
     public void deleteItem() {
         //given
-        Item item = new Item("milk",2.5);
+        Item item = new Item("milk",new BigDecimal(2.5), 200);
         itemDao.save(item);
         //when
         itemDao.delete(item);

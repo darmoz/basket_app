@@ -6,40 +6,42 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Setter
 @NoArgsConstructor
 @Entity(name = "ITEMS")
 public class Item {
     @Id
-    @GeneratedValue
-    @Column(name = "ITEM_ID", unique = true)
-    private long Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long itemId;
     @Column(name = "ITEM_NAME", unique = true)
     private String name;
     @Column(name = "PRICE")
-    private double price;
-    private BasketItems basketItems;
+    private BigDecimal price;
+    @Column(name = "UNIT")
+    private int unit;
 
-    public Item(final String name, final double price) {
+    public Item(final String name, final BigDecimal price, final int unit) {
         this.name=name;
         this.price=price;
+        this.unit=unit;
     }
 
     public long getId() {
-        return Id;
+        return itemId;
     }
 
     public String getName() {
         return name;
     }
 
-    public double getPrice() {
-        return price;
+    public BigDecimal getPrice() {
+        return this.price;
     }
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "BASKET_ITEMS_ID")
-    public BasketItems getBasketItems() {
-        return basketItems;
+
+    public int getUnit() {
+        return unit;
     }
+
 }

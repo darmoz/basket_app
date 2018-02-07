@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
@@ -40,10 +41,10 @@ public class ItemControllerTestSuite {
     @Test
     public void getItem() throws Exception {
         //given
-        Item item = new Item("milk",2.5);
-        item.setId(1L);
-        ItemDto itemDto = new ItemDto("milk", 2.5);
-        itemDto.setItemId(1L);
+        Item item = new Item("milk",new BigDecimal(2.5), 10);
+        item.setItemId(1L);
+        ItemDto itemDto = new ItemDto("milk", new BigDecimal(2.5), 10);
+        itemDto.setId(1L);
         //when & then
         when(dbService.getItemById(item.getId())).thenReturn(Optional.ofNullable(item));
         when(itemMapper.mapItemDto(item)).thenReturn(itemDto);
@@ -59,14 +60,14 @@ public class ItemControllerTestSuite {
     @Test
     public void testDeleteItem() throws Exception {
         //given
-        Item item = new Item("milk",2.5);
-        item.setId(1L);
-        ItemDto itemDto = new ItemDto("milk",2.5);
-        itemDto.setItemId(1L);
+        Item item = new Item("milk",new BigDecimal(2.5),10);
+        item.setItemId(1L);
+        ItemDto itemDto = new ItemDto("milk", new BigDecimal(2.5), 10);
+        itemDto.setId(1L);
         when(dbService.getItemById(item.getId())).thenReturn(Optional.ofNullable(item));
         doNothing().when(dbService).deleteItem(item);
         //when & then
-        mockMvc.perform(delete("/v1/item/deleteItem?itemId={itemId}", 1L)
+        mockMvc.perform(delete("/v1/item/deleteItem?id={id}", 1L)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
     }
