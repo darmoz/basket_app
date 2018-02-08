@@ -9,6 +9,6 @@ import com.basket.basket.exceptions.NoOpenBasketException;
 public interface CustomerService {
 
     Basket saveBasket(BasketDto basketDto);
-    void addToBasket(BasketItemsDto basketItemsDto) throws NoOpenBasketException;
-    Basket closeBasket(BasketDto basketDto);
+    Basket addToBasket(String itemName, int quantity) throws NoOpenBasketException;
+    Basket closeBasket() throws NoOpenBasketException;
 }

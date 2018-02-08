@@ -24,4 +24,6 @@ public abstract class AbstractCustomerCost implements CustomerCost {
         return customerCost.description();
     }
 
+    public abstract String getItemName();
+
 }

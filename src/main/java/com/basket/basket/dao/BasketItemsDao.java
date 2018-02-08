@@ -19,4 +19,7 @@ public interface BasketItemsDao extends CrudRepository<BasketItems, Long> {
 
     @Override
     Optional<BasketItems> findById(Long id);
+
+    long count();
+
 }

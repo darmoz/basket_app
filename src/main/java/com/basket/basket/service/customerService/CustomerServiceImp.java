@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -33,30 +33,30 @@ public class CustomerServiceImp implements CustomerService {
     @Autowired
     private ItemDao itemDao;
 
-    private boolean basketIsOpen = false;
+    private Basket basket;
 
+    private boolean basketIsOpen = false;
 
     @Override
     public Basket saveBasket(BasketDto basketdto) {
-
         LOGGER.info("New basket has been opened");
-        basketIsOpen=true;
-        return basketDao.save(basketMapper.mapToBasket(basketdto));
-
+        basketIsOpen = true;
+        basket = basketDao.save(basketMapper.mapToBasket(basketdto));
+        return basket;
     }
 
     @Override
-    public void addToBasket(BasketItemsDto basketItemsDto) throws NoOpenBasketException {
-
+    public Basket addToBasket(String itemName, int quantity) throws NoOpenBasketException {
         LOGGER.info("New item is about to be add to the basket");
-
         if(basketIsOpen) {
-            Basket basket = basketDao.findBasketByBasketId(basketItemMapperNoId.mapToBasketItemsNoId(basketItemsDto)
-                    .getBasket().getBasketId());
-            Item item = itemDao.findByItemId(basketItemMapperNoId.mapToBasketItemsNoId(basketItemsDto).getItem()
-                    .getItemId());
-            basket.getBasketItemsList().add(new BasketItems(basket, item, basketItemsDto.getQuantity()));
-            basketDao.save(basket);
+            Optional<Item> item = itemDao.findByName(itemName);
+
+            BasketItems basketItems = new BasketItems(quantity);
+            basketItems.setBasket(basket);
+            basketItems.setItem(item.get());
+
+            basket.getBasketItemsList().add(basketItems);
+            return basketDao.save(basket);
         } else {
             LOGGER.warn("All basket are closed, please open new basket");
             throw new NoOpenBasketException();
@@ -64,10 +64,15 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
-    public Basket closeBasket(BasketDto basketDto) {
+    public Basket closeBasket() throws NoOpenBasketException {
         LOGGER.info("The basket has been closed");
-        basketIsOpen=false;
-        return basketDao.findBasketByBasketId(basketMapper.mapToBasket(basketDto).getBasketId());
+        if(basketIsOpen) {
+            basketIsOpen = false;
+            return basket;
+        } else {
+            LOGGER.warn("All basket are closed, please open new basket");
+            throw new NoOpenBasketException();
+        }
     }
 
 }

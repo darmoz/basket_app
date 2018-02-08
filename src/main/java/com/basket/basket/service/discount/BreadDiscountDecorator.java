@@ -12,7 +12,7 @@ public class BreadDiscountDecorator extends AbstractCustomerCost {
 
     private BasketItems basketItems;
 
-    protected BreadDiscountDecorator(CustomerCost customerCost, BasketItems basketItems) {
+    public BreadDiscountDecorator(CustomerCost customerCost, BasketItems basketItems) {
         super(customerCost);
         this.basketItems=basketItems;
     }
@@ -21,19 +21,27 @@ public class BreadDiscountDecorator extends AbstractCustomerCost {
     public BigDecimal cost() {
 
         LOGGER.info("Discount for bread has been included");
-        if(basketItems.getItem().getName().equals("bread") && basketItems.getQuantity()>=20) {
-            return super.cost().subtract((new BigDecimal(basketItems.getQuantity())
+        if(basketItems.getItem().getName().equals(getItemName()) && basketItems.getQuantity()>=20) {
+            return super.cost().subtract((BigDecimal.valueOf(basketItems.getQuantity())
                     .multiply(basketItems.getItem().getPrice()))
-                    .multiply(new BigDecimal(0.05)));
+                    .multiply(BigDecimal.valueOf(0.05)));
         } else {
-            return null;
+            return super.cost();
         }
 
     }
 
     @Override
     public String description() {
-        return " - [5% of bread price]";
+        if(basketItems.getItem().getName().equals(getItemName()) && basketItems.getQuantity()>=20) {
+            return String.format(super.description() + " - [5%% of %s price]", getItemName());
+        } else {
+            return super.description();
+        }
     }
 
+    @Override
+    public String getItemName() {
+        return "bread";
+    }
 }

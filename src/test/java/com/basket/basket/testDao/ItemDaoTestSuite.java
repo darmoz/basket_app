@@ -1,4 +1,4 @@
-package com.basket.basket;
+package com.basket.basket.testDao;
 
 import com.basket.basket.dao.ItemDao;
 import com.basket.basket.domain.Item;
@@ -20,10 +20,10 @@ public class ItemDaoTestSuite {
     @Test
     public void testGetItemById() {
         //given
-        Item item = new Item(1L,"milk",new BigDecimal(2.5), 10);
+        Item item = new Item("test",new BigDecimal(2.5), 10);
         itemDao.save(item);
         //when
-        long id = itemDao.findByName("milk").get().getItemId();
+        long id = itemDao.findByName("test").get().getItemId();
         String name = itemDao.findById(id).get().getName();
         //then
         Assert.assertEquals(item.getName(), name);
@@ -33,7 +33,7 @@ public class ItemDaoTestSuite {
     @Test
     public void testGetItemByName() {
         //given
-        Item item = new Item(1L,"milk",new BigDecimal(2.5), 10);
+        Item item = new Item("test",new BigDecimal(2.5), 10);
         itemDao.save(item);
         //when
         long id = itemDao.findByName("milk").get().getItemId();
@@ -46,11 +46,11 @@ public class ItemDaoTestSuite {
     @Test
     public void deleteItem() {
         //given
-        Item item = new Item(1L,"milk",new BigDecimal(2.5), 10);
+        Item item = new Item("test",new BigDecimal(2.5), 10);
         itemDao.save(item);
         //when
         itemDao.delete(item);
         //then
-        Assert.assertFalse(itemDao.findByName("milk").isPresent());
+        Assert.assertFalse(itemDao.findByName("test").isPresent());
     }
 }

@@ -13,7 +13,7 @@ public class MilkDiscountDecorator extends AbstractCustomerCost {
 
     private BasketItems basketItems;
 
-    protected MilkDiscountDecorator(CustomerCost customerCost, BasketItems basketItems) {
+    public MilkDiscountDecorator(CustomerCost customerCost, BasketItems basketItems) {
         super(customerCost);
         this.basketItems=basketItems;
     }
@@ -23,18 +23,26 @@ public class MilkDiscountDecorator extends AbstractCustomerCost {
 
         LOGGER.info("Discount for milk has been included");
         if(basketItems.getItem().getName().equals("milk") && basketItems.getQuantity()>=70) {
-            return super.cost().subtract((new BigDecimal(basketItems.getQuantity())
+            return super.cost().subtract((BigDecimal.valueOf(basketItems.getQuantity())
                     .multiply(basketItems.getItem().getPrice()))
-                    .multiply(new BigDecimal(0.1)));
+                    .multiply(BigDecimal.valueOf(0.1)));
         } else {
-            return null;
+            return super.cost();
         }
 
     }
 
     @Override
     public String description() {
-        return " - [10% of milk price]";
+        if(basketItems.getItem().getName().equals("milk") && basketItems.getQuantity()>=70) {
+            return String.format(super.description() + " - [10%% of %s price]", getItemName());
+        } else {
+            return super.description();
+        }
     }
 
+    @Override
+    public String getItemName() {
+        return "milk";
+    }
 }

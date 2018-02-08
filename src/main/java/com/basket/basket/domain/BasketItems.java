@@ -1,40 +1,45 @@
 package com.basket.basket.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "BASKET_ITEMS")
 public class BasketItems {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(
+            strategy = GenerationType.AUTO,
+            generator="native"
+    )
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     private long basketItemsId;
     @Column(name = "QUANTITY")
     private int quantity;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "basketId")
     private Basket basket;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "itemId")
     private Item item;
 
-    public BasketItems(final long basketItemsId, final Basket basket, final Item item, final int quantity) {
+    public BasketItems(final long basketItemsId, final int quantity) {
         this.basketItemsId=basketItemsId;
         this.quantity=quantity;
-        this.basket=basket;
-        this.item=item;
     }
 
-    public BasketItems(final Basket basket, final Item item, final int quantity) {
+    public BasketItems(final int quantity) {
         this.quantity=quantity;
-        this.basket=basket;
-        this.item=item;
+
     }
 
     public long getBasketItemId() {

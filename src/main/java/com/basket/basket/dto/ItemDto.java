@@ -25,4 +25,10 @@ public class ItemDto {
         this.unit=unit;
     }
 
+    public ItemDto(final String name, final BigDecimal price, final int unit) {
+        this.name=name;
+        this.price=price;
+        this.unit=unit;
+    }
+
 }

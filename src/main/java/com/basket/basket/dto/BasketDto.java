@@ -25,4 +25,9 @@ public class BasketDto {
         this.creationDate=new Date();
         basketItemsList = new ArrayList<>();
     }
+
+    public BasketDto(final Date creationDate) {
+        this.creationDate=new Date();
+        basketItemsList = new ArrayList<>();
+    }
 }

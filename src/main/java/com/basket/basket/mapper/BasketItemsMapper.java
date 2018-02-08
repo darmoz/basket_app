@@ -8,10 +8,9 @@ import org.springframework.stereotype.Component;
 public class BasketItemsMapper {
 
     public BasketItems mapToBasketItems(final BasketItemsDto basketItemsDto) {
+
         return new BasketItems(
                 basketItemsDto.getBasketItemId(),
-                basketItemsDto.getBasket(),
-                basketItemsDto.getItem(),
                 basketItemsDto.getQuantity()
                 );
     }
@@ -19,8 +18,6 @@ public class BasketItemsMapper {
     public BasketItemsDto mapToBasketItemsDto(final BasketItems basketItems) {
         return new BasketItemsDto(
                 basketItems.getBasketItemId(),
-                basketItems.getBasket(),
-                basketItems.getItem(),
                 basketItems.getQuantity()
         );
     }

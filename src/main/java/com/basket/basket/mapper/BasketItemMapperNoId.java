@@ -9,16 +9,16 @@ public class BasketItemMapperNoId {
 
     public BasketItems mapToBasketItemsNoId(final BasketItemsDto basketItemsDto) {
         return new BasketItems(
-                basketItemsDto.getBasket(),
-                basketItemsDto.getItem(),
+                /*basketItemsDto.getBasket(),
+                basketItemsDto.getItem(),*/
                 basketItemsDto.getQuantity()
         );
     }
 
     public BasketItemsDto mapToBasketItemsNoIdDto(final BasketItems basketItems) {
         return new BasketItemsDto(
-                basketItems.getBasket(),
-                basketItems.getItem(),
+                /*basketItems.getBasket(),
+                basketItems.getItem(),*/
                 basketItems.getQuantity()
         );
     }
