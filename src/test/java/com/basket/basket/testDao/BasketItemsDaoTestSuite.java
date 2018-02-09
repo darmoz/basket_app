@@ -32,16 +32,16 @@ public class BasketItemsDaoTestSuite {
     @Test
     public void testGetBasketItemById() {
         //given
-        Basket basket = new Basket(new Date());
-        basketDao.save(basket);
-        Item item = new Item("milk", new BigDecimal(2.5),50);
-        itemDao.save(item);
+        Basket basket = new Basket(null);
+        basket = basketDao.save(basket);
+        Item item = new Item("test", BigDecimal.valueOf(2.5),50);
+        item = itemDao.save(item);
         //when
         BasketItems basketItems = new BasketItems(10);
         basketItems.setItem(item);
         basketItems.setBasket(basket);
-        basketItemsDao.save(basketItems);
-        int retrievedQuantity = basketItemsDao.findById(1L).get().getQuantity();
+        basketItems = basketItemsDao.save(basketItems);
+        int retrievedQuantity = basketItemsDao.findById(basketItems.getBasketItemId()).get().getQuantity();
         //then
         Assert.assertEquals(10, retrievedQuantity);
         //clean up
@@ -53,14 +53,14 @@ public class BasketItemsDaoTestSuite {
     @Test
     public void testDeleteBasketItems() {
         //given
-        Basket basket = new Basket(new Date());
-        basketDao.save(basket);
-        Item item = new Item("milk", new BigDecimal(2.5),50);
-        itemDao.save(item);
+        Basket basket = new Basket(null);
+        basket = basketDao.save(basket);
+        Item item = new Item("test", BigDecimal.valueOf(2.5),50);
+        item = itemDao.save(item);
         BasketItems basketItems = new BasketItems(10);
         basketItems.setItem(item);
         basketItems.setBasket(basket);
-        basketItemsDao.save(basketItems);
+        basketItems = basketItemsDao.save(basketItems);
         //when
         basketItemsDao.delete(basketItems);
         long count = basketItemsDao.count();

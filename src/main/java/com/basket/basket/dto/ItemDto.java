@@ -15,7 +15,6 @@ public class ItemDto {
     private long itemId;
     private String name;
     private BigDecimal price;
-    private Basket basket;
     private int unit;
 
     public ItemDto(final long itemId, final String name, final BigDecimal price, final int unit) {

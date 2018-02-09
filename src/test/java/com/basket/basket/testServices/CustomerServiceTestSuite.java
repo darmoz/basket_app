@@ -41,7 +41,7 @@ public class CustomerServiceTestSuite {
     public void testSaveBasket() {
         //given
         long count = basketDao.count();
-        BasketDto basketDto = new BasketDto(new Date());
+        BasketDto basketDto = new BasketDto(null);
         //when
         Basket basket = customerServiceImp.saveBasket(basketDto);
         //then
@@ -53,11 +53,11 @@ public class CustomerServiceTestSuite {
     @Test
     public void testAddToBasket() throws NoOpenBasketException {
         //given
-        BasketDto basketDto = new BasketDto(new Date());
+        BasketDto basketDto = new BasketDto(null);
         customerServiceImp.saveBasket(basketDto);
 
         Item item = new Item("test", BigDecimal.valueOf(2.5), 50);
-        itemDao.save(item);
+        item = itemDao.save(item);
         //when
         Basket basket = customerServiceImp.addToBasket(item.getName(),20);
         //then
@@ -70,7 +70,7 @@ public class CustomerServiceTestSuite {
     @Test(expected = NoOpenBasketException.class)
     public void testCloseBasket() throws NoOpenBasketException {
         //given
-        BasketDto basketDto = new BasketDto(new Date());
+        BasketDto basketDto = new BasketDto(null);
         Basket basket = customerServiceImp.saveBasket(basketDto);
         //when
         customerServiceImp.closeBasket();

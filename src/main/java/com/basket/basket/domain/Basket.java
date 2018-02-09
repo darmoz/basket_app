@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.math.BigDecimal;
+
 
 @Setter
 @Getter
@@ -42,12 +42,12 @@ public class Basket {
     public Basket(final long basketId, final BigDecimal subtotal, final Date creationDate) {
         this.basketId=basketId;
         this.subtotal=subtotal;
-        this.creationDate=new Date();
+        this.creationDate=creationDate;
         basketItemsList = new ArrayList<>();
     }
 
     public Basket(final Date creationDate) {
-        this.creationDate=new Date();
+        this.creationDate=creationDate;
         basketItemsList = new ArrayList<>();
     }
 
@@ -67,11 +67,11 @@ public class Basket {
     }
 
     public BigDecimal calculateTotal(){
-        BigDecimal total = BigDecimal.ZERO;
+        subtotal = BigDecimal.ZERO;
         for (BasketItems list : this.getBasketItemsList()) {
-            total = total.add(list.getItem().getPrice().multiply(BigDecimal.valueOf(list.getQuantity())));
+            subtotal = subtotal.add(list.getItem().getPrice().multiply(BigDecimal.valueOf(list.getQuantity())));
         }
-        return total;
+        return subtotal;
     }
 
 }

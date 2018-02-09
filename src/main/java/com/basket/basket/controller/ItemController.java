@@ -25,7 +25,7 @@ public class ItemController {
     @RequestMapping(method = RequestMethod.POST, value = "createItem", consumes = APPLICATION_JSON_VALUE)
     public void createItem(@RequestBody ItemDto itemDto) { dbService.saveItem(itemMapper.mapItem(itemDto));}
 
-    @RequestMapping(method = RequestMethod.PUT, value = "updateItem")
+    @RequestMapping(method = RequestMethod.PUT, value = "updateItem", consumes = APPLICATION_JSON_VALUE)
     public ItemDto updateTask(@RequestBody ItemDto itemDto) {return  itemMapper.mapItemDto(
             dbService.saveItem(itemMapper.mapItem(itemDto)));}
 

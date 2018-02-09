@@ -21,7 +21,7 @@ public class ItemDaoTestSuite {
     public void testGetItemById() {
         //given
         Item item = new Item("test",new BigDecimal(2.5), 10);
-        itemDao.save(item);
+        item = itemDao.save(item);
         //when
         long id = itemDao.findByName("test").get().getItemId();
         String name = itemDao.findById(id).get().getName();
@@ -34,9 +34,9 @@ public class ItemDaoTestSuite {
     public void testGetItemByName() {
         //given
         Item item = new Item("test",new BigDecimal(2.5), 10);
-        itemDao.save(item);
+        item = itemDao.save(item);
         //when
-        long id = itemDao.findByName("milk").get().getItemId();
+        long id = itemDao.findByName("test").get().getItemId();
         //then
         Assert.assertEquals(item.getItemId(), id);
         //clean up
@@ -47,10 +47,23 @@ public class ItemDaoTestSuite {
     public void deleteItem() {
         //given
         Item item = new Item("test",new BigDecimal(2.5), 10);
-        itemDao.save(item);
+        item = itemDao.save(item);
         //when
         itemDao.delete(item);
         //then
         Assert.assertFalse(itemDao.findByName("test").isPresent());
     }
+
+    @Test
+    public void saveItem() {
+        //given
+        Item item = new Item("test",new BigDecimal(2.5), 10);
+        //when
+        item = itemDao.save(item);
+        //then
+        Assert.assertTrue(itemDao.findByName("test").isPresent());
+        //clean up
+        itemDao.delete(item);
+    }
+
 }

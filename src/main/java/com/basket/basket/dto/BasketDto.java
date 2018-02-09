@@ -22,12 +22,12 @@ public class BasketDto {
     public BasketDto(final long basketId, final BigDecimal subtotal, final Date creationDate) {
         this.basketId=basketId;
         this.subtotal=subtotal;
-        this.creationDate=new Date();
+        this.creationDate=creationDate;
         basketItemsList = new ArrayList<>();
     }
 
     public BasketDto(final Date creationDate) {
-        this.creationDate=new Date();
+        this.creationDate=creationDate;
         basketItemsList = new ArrayList<>();
     }
 }

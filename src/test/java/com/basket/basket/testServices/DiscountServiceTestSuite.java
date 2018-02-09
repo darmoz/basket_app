@@ -21,7 +21,7 @@ public class DiscountServiceTestSuite {
     public void testDiscountButterDecorator() {
         //given
         Item item = new Item(3L, "butter", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 50, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
@@ -37,7 +37,7 @@ public class DiscountServiceTestSuite {
     public void testNoDiscountButterDecorator() {
         //given
         Item item = new Item(3L, "butter", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 5, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
@@ -53,7 +53,7 @@ public class DiscountServiceTestSuite {
     public void testDiscountMilkDecorator() {
         //given
         Item item = new Item(3L, "milk", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 100, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
@@ -69,7 +69,7 @@ public class DiscountServiceTestSuite {
     public void testNoDiscountMilkDecorator() {
         //given
         Item item = new Item(3L, "milk", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 5, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
@@ -85,7 +85,7 @@ public class DiscountServiceTestSuite {
     public void testDiscountBreadDecorator() {
         //given
         Item item = new Item(3L, "bread", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 100, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
@@ -101,7 +101,7 @@ public class DiscountServiceTestSuite {
     public void testNoDiscountBreadDecorator() {
         //given
         Item item = new Item(3L, "bread", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 5, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
@@ -117,7 +117,7 @@ public class DiscountServiceTestSuite {
     public void testDiscountHamDecorator() {
         //given
         Item item = new Item(3L, "ham", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 100, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
@@ -133,7 +133,7 @@ public class DiscountServiceTestSuite {
     public void testNoDiscountHamDecorator() {
         //given
         Item item = new Item(3L, "ham", BigDecimal.valueOf(5.0), 200);
-        Basket basket = new Basket(new Date());
+        Basket basket = new Basket(null);
         BasketItems basketItems1 = new BasketItems(1L, 5, basket, item);
         basket.getBasketItemsList().add(basketItems1);
         //when
