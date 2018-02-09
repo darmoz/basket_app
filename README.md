@@ -15,20 +15,26 @@ Password: basket_pass
 Application author was inspired by self service shopping poinst which are located usualy in big markets.
 The application was designed in the way that can be attached to any shoppingChart system. 
 Customer functionality allows to select item, open the basket, place selected item in the basket and close the basket at any time.
-From the system administrator side functioinality of adding new items and create special offers to customers are implemented.
+From the system administrator side the functioinality of adding new items and create special offers to customers are implemented.
 
 ## project structure
 Project structure is splitted into a few layers (see below):
 Domain - where all domain object are sitted.
     - Items: is a shop storage 
     - Basket Items: items taken from storage with custoomer selected quantity
-    - Basket: where all Basket Items are plaed before final payment
+    - Basket: where all Basket Items are placed before final payment
+Dto     
 Dao - which provide access to standard crud requests for domain objects.
 Mappers - which stears of incomming and outcomming object data transfer.
 Controller - rest controllers with the api endpoints.
 Service - where requested functionality and bussines logic is implemented.
     - Customer Service: with all customer related methods
     - Discount: with a bonus scheme
+    
+## database
+Database was created with ORM approach via JPA API. Three of the domain layer object were use to create relational database.
+Item is related to Basket Item with relation 1:1. The Basket Item is related to Basket with relation 1:N.
+Items table has no cascade relation to other tables. The Basket table has cascade relation to the Basket Items table. However the oposit way is not true.
 
 ## unit test
 Unit Test with coverage >80% was writen and succesfuly executed over the entire code.
@@ -39,7 +45,7 @@ After application execution (localy) the API documentation will be available und
 http://localhost:8080/swagger-ui.html
 It presents possible endpoints for all controller used in the proejct with examples of response(JSON).
 
-#disscount functionality
+## disscount functionality
 Disscount functionality was developed as a decorator pattern. This approach allows easly change or develop new discounts offers.
 
 ## contact
