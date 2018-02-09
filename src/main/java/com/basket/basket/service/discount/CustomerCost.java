@@ -4,5 +4,6 @@ import java.math.BigDecimal;
 
 public interface CustomerCost {
     BigDecimal cost();
+
     String description();
 }

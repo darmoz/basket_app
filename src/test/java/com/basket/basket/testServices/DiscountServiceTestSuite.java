@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,7 +28,7 @@ public class DiscountServiceTestSuite {
         customerCost = new ButterDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(247.5).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(247.5).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost - [1% of butter price]", customerCost.description());
     }
 
@@ -45,7 +44,7 @@ public class DiscountServiceTestSuite {
         customerCost = new ButterDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost", customerCost.description());
     }
 
@@ -61,7 +60,7 @@ public class DiscountServiceTestSuite {
         customerCost = new MilkDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(450).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(450).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost - [10% of milk price]", customerCost.description());
     }
 
@@ -77,7 +76,7 @@ public class DiscountServiceTestSuite {
         customerCost = new MilkDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost", customerCost.description());
     }
 
@@ -93,7 +92,7 @@ public class DiscountServiceTestSuite {
         customerCost = new BreadDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(475).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(475).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost - [5% of bread price]", customerCost.description());
     }
 
@@ -109,7 +108,7 @@ public class DiscountServiceTestSuite {
         customerCost = new BreadDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost", customerCost.description());
     }
 
@@ -125,7 +124,7 @@ public class DiscountServiceTestSuite {
         customerCost = new HamDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(490).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(490).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost - [2% of ham price]", customerCost.description());
     }
 
@@ -141,7 +140,7 @@ public class DiscountServiceTestSuite {
         customerCost = new HamDiscountDecorator(customerCost, basketItems1);
         BigDecimal result = customerCost.cost();
         //then
-        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(),result.doubleValue(), 0.0);
+        Assert.assertEquals(BigDecimal.valueOf(25).doubleValue(), result.doubleValue(), 0.0);
         Assert.assertEquals("Total shopping cost", customerCost.description());
     }
 

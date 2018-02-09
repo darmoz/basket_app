@@ -17,12 +17,12 @@ public class BasketItemsDto {
     private Basket basket;
     private Item item;
 
-    public BasketItemsDto(final long basketItemsId,  final int quantity) {
-        this.basketItemId=basketItemsId;
-        this.quantity=quantity;
+    public BasketItemsDto(final long basketItemsId, final int quantity) {
+        this.basketItemId = basketItemsId;
+        this.quantity = quantity;
     }
 
     public BasketItemsDto(final int quantity) {
-        this.quantity=quantity;
+        this.quantity = quantity;
     }
 }

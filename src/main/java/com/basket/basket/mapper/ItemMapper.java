@@ -15,6 +15,7 @@ public class ItemMapper {
                 itemDto.getUnit()
         );
     }
+
     public ItemDto mapItemDto(final Item item) {
         return new ItemDto(
                 item.getItemId(),

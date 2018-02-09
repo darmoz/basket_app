@@ -19,7 +19,7 @@ public class ItemMapperTestSutie {
 
     @Before
     public void setup() {
-        itemMapperNoId=new ItemMapperNoId();
+        itemMapperNoId = new ItemMapperNoId();
     }
 
     @Test

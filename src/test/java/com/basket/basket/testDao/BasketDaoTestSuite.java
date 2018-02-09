@@ -1,9 +1,7 @@
 package com.basket.basket.testDao;
 
 import com.basket.basket.dao.BasketDao;
-import com.basket.basket.dao.ItemDao;
 import com.basket.basket.domain.Basket;
-import com.basket.basket.domain.Item;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
@@ -29,7 +25,7 @@ public class BasketDaoTestSuite {
         //when
         Optional<Basket> retrievedBasket = basketDao.findById(basket.getBasketId());
         //then
-        Assert.assertTrue(retrievedBasket.get()!=null);
+        Assert.assertTrue(retrievedBasket.get() != null);
         //clean up
         basketDao.delete(basket);
     }

@@ -6,7 +6,6 @@ import com.basket.basket.domain.Basket;
 import com.basket.basket.domain.BasketItems;
 import com.basket.basket.domain.Item;
 import com.basket.basket.dto.BasketDto;
-import com.basket.basket.dto.BasketItemsDto;
 import com.basket.basket.exceptions.NoOpenBasketException;
 import com.basket.basket.mapper.BasketItemMapperNoId;
 import com.basket.basket.mapper.BasketMapper;
@@ -48,7 +47,7 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public Basket addToBasket(String itemName, int quantity) throws NoOpenBasketException {
         LOGGER.info("New item is about to be add to the basket");
-        if(basketIsOpen) {
+        if (basketIsOpen) {
             Optional<Item> item = itemDao.findByName(itemName);
 
             BasketItems basketItems = new BasketItems(quantity);
@@ -66,7 +65,7 @@ public class CustomerServiceImp implements CustomerService {
     @Override
     public Basket closeBasket() throws NoOpenBasketException {
         LOGGER.info("The basket has been closed");
-        if(basketIsOpen) {
+        if (basketIsOpen) {
             basketIsOpen = false;
             return basket;
         } else {

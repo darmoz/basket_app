@@ -20,7 +20,7 @@ public class ItemDaoTestSuite {
     @Test
     public void testGetItemById() {
         //given
-        Item item = new Item("test",new BigDecimal(2.5), 10);
+        Item item = new Item("test", new BigDecimal(2.5), 10);
         item = itemDao.save(item);
         //when
         long id = itemDao.findByName("test").get().getItemId();
@@ -30,10 +30,11 @@ public class ItemDaoTestSuite {
         //clean up
         itemDao.delete(item);
     }
+
     @Test
     public void testGetItemByName() {
         //given
-        Item item = new Item("test",new BigDecimal(2.5), 10);
+        Item item = new Item("test", new BigDecimal(2.5), 10);
         item = itemDao.save(item);
         //when
         long id = itemDao.findByName("test").get().getItemId();
@@ -46,7 +47,7 @@ public class ItemDaoTestSuite {
     @Test
     public void deleteItem() {
         //given
-        Item item = new Item("test",new BigDecimal(2.5), 10);
+        Item item = new Item("test", new BigDecimal(2.5), 10);
         item = itemDao.save(item);
         //when
         itemDao.delete(item);
@@ -57,7 +58,7 @@ public class ItemDaoTestSuite {
     @Test
     public void saveItem() {
         //given
-        Item item = new Item("test",new BigDecimal(2.5), 10);
+        Item item = new Item("test", new BigDecimal(2.5), 10);
         //when
         item = itemDao.save(item);
         //then

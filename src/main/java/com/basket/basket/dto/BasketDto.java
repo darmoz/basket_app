@@ -20,14 +20,14 @@ public class BasketDto {
     private List<BasketItems> basketItemsList = new ArrayList<>();
 
     public BasketDto(final long basketId, final BigDecimal subtotal, final Date creationDate) {
-        this.basketId=basketId;
-        this.subtotal=subtotal;
-        this.creationDate=creationDate;
+        this.basketId = basketId;
+        this.subtotal = subtotal;
+        this.creationDate = creationDate;
         basketItemsList = new ArrayList<>();
     }
 
     public BasketDto(final Date creationDate) {
-        this.creationDate=creationDate;
+        this.creationDate = creationDate;
         basketItemsList = new ArrayList<>();
     }
 }

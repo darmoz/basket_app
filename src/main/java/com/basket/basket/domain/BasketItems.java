@@ -16,7 +16,7 @@ public class BasketItems {
     @Id
     @GeneratedValue(
             strategy = GenerationType.AUTO,
-            generator="native"
+            generator = "native"
     )
     @GenericGenerator(
             name = "native",
@@ -33,12 +33,12 @@ public class BasketItems {
     private Item item;
 
     public BasketItems(final long basketItemsId, final int quantity) {
-        this.basketItemsId=basketItemsId;
-        this.quantity=quantity;
+        this.basketItemsId = basketItemsId;
+        this.quantity = quantity;
     }
 
     public BasketItems(final int quantity) {
-        this.quantity=quantity;
+        this.quantity = quantity;
 
     }
 

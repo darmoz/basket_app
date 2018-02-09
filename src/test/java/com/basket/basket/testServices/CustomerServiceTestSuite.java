@@ -4,13 +4,10 @@ import com.basket.basket.dao.BasketDao;
 import com.basket.basket.dao.BasketItemsDao;
 import com.basket.basket.dao.ItemDao;
 import com.basket.basket.domain.Basket;
-import com.basket.basket.domain.BasketItems;
 import com.basket.basket.domain.Item;
 import com.basket.basket.dto.BasketDto;
-import com.basket.basket.dto.BasketItemsDto;
 import com.basket.basket.exceptions.NoOpenBasketException;
 import com.basket.basket.mapper.BasketMapper;
-import com.basket.basket.service.customerService.CustomerService;
 import com.basket.basket.service.customerService.CustomerServiceImp;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,7 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -59,7 +55,7 @@ public class CustomerServiceTestSuite {
         Item item = new Item("test", BigDecimal.valueOf(2.5), 50);
         item = itemDao.save(item);
         //when
-        Basket basket = customerServiceImp.addToBasket(item.getName(),20);
+        Basket basket = customerServiceImp.addToBasket(item.getName(), 20);
         //then
         Assert.assertEquals(1, basket.getBasketItemsList().size());
         //clean

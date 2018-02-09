@@ -14,17 +14,17 @@ public class ButterDiscountDecorator extends AbstractCustomerCost {
 
     public ButterDiscountDecorator(CustomerCost customerCost, BasketItems basketItems) {
         super(customerCost);
-        this.basketItems=basketItems;
+        this.basketItems = basketItems;
     }
 
     @Override
     public BigDecimal cost() {
 
         LOGGER.info("Discount for butter has been included");
-        if(basketItems.getItem().getName().equals(getItemName()) && basketItems.getQuantity()>=10) {
+        if (basketItems.getItem().getName().equals(getItemName()) && basketItems.getQuantity() >= 10) {
             return super.cost().subtract((BigDecimal.valueOf(basketItems.getQuantity())
                     .multiply(basketItems.getItem().getPrice()))
-                        .multiply(BigDecimal.valueOf(0.01)));
+                    .multiply(BigDecimal.valueOf(0.01)));
         } else {
             return super.cost();
         }
@@ -34,7 +34,7 @@ public class ButterDiscountDecorator extends AbstractCustomerCost {
 
     @Override
     public String description() {
-        if(basketItems.getItem().getName().equals(getItemName()) && basketItems.getQuantity()>=10) {
+        if (basketItems.getItem().getName().equals(getItemName()) && basketItems.getQuantity() >= 10) {
             return String.format(super.description() + " - [1%% of %s price]", getItemName());
         } else {
             return super.description();

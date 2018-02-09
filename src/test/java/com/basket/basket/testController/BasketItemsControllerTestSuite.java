@@ -1,11 +1,8 @@
 package com.basket.basket.testController;
 
-import com.basket.basket.controller.BasketController;
 import com.basket.basket.controller.BasketItemsController;
 import com.basket.basket.dbServices.DbService;
-import com.basket.basket.domain.Basket;
 import com.basket.basket.domain.BasketItems;
-import com.basket.basket.dto.BasketDto;
 import com.basket.basket.dto.BasketItemsDto;
 import com.basket.basket.mapper.BasketItemsMapper;
 import com.google.gson.Gson;
@@ -19,8 +16,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
@@ -56,7 +51,7 @@ public class BasketItemsControllerTestSuite {
         mockMvc.perform(get("/v1/basketItems/getBasketItem?basketItemId={basketItemsId}", 1L)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.basketItemId",is(1)))
+                .andExpect(jsonPath("$.basketItemId", is(1)))
                 .andExpect(jsonPath("$.quantity", is(10)));
     }
 
@@ -77,7 +72,7 @@ public class BasketItemsControllerTestSuite {
     @Test
     public void testPostBasketItems() throws Exception {
         //given
-        BasketItems basketItems = new BasketItems(1L,20);
+        BasketItems basketItems = new BasketItems(1L, 20);
         BasketItemsDto basketItemsDto = new BasketItemsDto(1L, 20);
 
         when(basketItemsMapper.mapToBasketItems(basketItemsDto)).thenReturn(basketItems);
@@ -107,7 +102,7 @@ public class BasketItemsControllerTestSuite {
                 .content(jsonContent)
                 .characterEncoding("UTF-8"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.basketItemId",is(1)))
+                .andExpect(jsonPath("$.basketItemId", is(1)))
                 .andExpect(jsonPath("$.quantity", is(1)));
     }
 }

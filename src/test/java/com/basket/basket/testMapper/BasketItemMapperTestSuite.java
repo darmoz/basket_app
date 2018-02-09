@@ -3,13 +3,10 @@ package com.basket.basket.testMapper;
 import com.basket.basket.domain.BasketItems;
 import com.basket.basket.dto.BasketItemsDto;
 import com.basket.basket.mapper.BasketItemMapperNoId;
-import com.basket.basket.mapper.BasketMapper;
-import com.basket.basket.mapper.BasketMapperNoId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -21,7 +18,7 @@ public class BasketItemMapperTestSuite {
 
     @Before
     public void setup() {
-        basketItemMapperNoId=new BasketItemMapperNoId();
+        basketItemMapperNoId = new BasketItemMapperNoId();
     }
 
     @Test

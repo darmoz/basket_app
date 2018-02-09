@@ -6,8 +6,6 @@ import com.basket.basket.dao.ItemDao;
 import com.basket.basket.domain.Basket;
 import com.basket.basket.domain.BasketItems;
 import com.basket.basket.domain.Item;
-import com.basket.basket.dto.BasketDto;
-import com.basket.basket.dto.ItemDto;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -34,7 +31,7 @@ public class BasketItemsDaoTestSuite {
         //given
         Basket basket = new Basket(null);
         basket = basketDao.save(basket);
-        Item item = new Item("test", BigDecimal.valueOf(2.5),50);
+        Item item = new Item("test", BigDecimal.valueOf(2.5), 50);
         item = itemDao.save(item);
         //when
         BasketItems basketItems = new BasketItems(10);
@@ -55,7 +52,7 @@ public class BasketItemsDaoTestSuite {
         //given
         Basket basket = new Basket(null);
         basket = basketDao.save(basket);
-        Item item = new Item("test", BigDecimal.valueOf(2.5),50);
+        Item item = new Item("test", BigDecimal.valueOf(2.5), 50);
         item = itemDao.save(item);
         BasketItems basketItems = new BasketItems(10);
         basketItems.setItem(item);
@@ -65,7 +62,7 @@ public class BasketItemsDaoTestSuite {
         basketItemsDao.delete(basketItems);
         long count = basketItemsDao.count();
         //then
-        Assert.assertEquals(0,count);
+        Assert.assertEquals(0, count);
         //clean up
         itemDao.delete(item);
         basketDao.delete(basket);

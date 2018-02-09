@@ -21,7 +21,7 @@ public class Basket {
     @Id
     @GeneratedValue(
             strategy = GenerationType.AUTO,
-            generator="native"
+            generator = "native"
     )
     @GenericGenerator(
             name = "native",
@@ -40,14 +40,14 @@ public class Basket {
     private List<BasketItems> basketItemsList;
 
     public Basket(final long basketId, final BigDecimal subtotal, final Date creationDate) {
-        this.basketId=basketId;
-        this.subtotal=subtotal;
-        this.creationDate=creationDate;
+        this.basketId = basketId;
+        this.subtotal = subtotal;
+        this.creationDate = creationDate;
         basketItemsList = new ArrayList<>();
     }
 
     public Basket(final Date creationDate) {
-        this.creationDate=creationDate;
+        this.creationDate = creationDate;
         basketItemsList = new ArrayList<>();
     }
 
@@ -62,15 +62,18 @@ public class Basket {
     public BigDecimal getSubtotal() {
         return this.subtotal;
     }
+
     public List<BasketItems> getBasketItemsList() {
         return this.basketItemsList;
     }
 
-    public BigDecimal calculateTotal(){
-        subtotal = BigDecimal.ZERO;
-        for (BasketItems list : this.getBasketItemsList()) {
-            subtotal = subtotal.add(list.getItem().getPrice().multiply(BigDecimal.valueOf(list.getQuantity())));
-        }
+    public BigDecimal calculateTotal() {
+
+        subtotal = BigDecimal.valueOf(this.getBasketItemsList().stream()
+                .mapToDouble(m->m.getItem().getPrice()
+                        .multiply(BigDecimal.valueOf(m.getQuantity())).doubleValue())
+                .sum());
+
         return subtotal;
     }
 

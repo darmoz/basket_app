@@ -12,7 +12,7 @@ public class BasketItemsMapper {
         return new BasketItems(
                 basketItemsDto.getBasketItemId(),
                 basketItemsDto.getQuantity()
-                );
+        );
     }
 
     public BasketItemsDto mapToBasketItemsDto(final BasketItems basketItems) {

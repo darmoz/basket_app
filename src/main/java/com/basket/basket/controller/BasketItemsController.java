@@ -21,18 +21,22 @@ public class BasketItemsController {
     @RequestMapping(method = RequestMethod.GET, value = "getBasketItem")
     public BasketItemsDto getBasketItem(@RequestParam Long basketItemId) throws ItemNotFoundException {
         return basketItemsMapper.mapToBasketItemsDto(dbService.getBasketItemsById(basketItemId)
-                .orElseThrow(ItemNotFoundException::new));}
+                .orElseThrow(ItemNotFoundException::new));
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "createBasketItem", consumes = APPLICATION_JSON_VALUE)
     public void createBasketItem(@RequestBody BasketItemsDto basketItemsDto) {
-        dbService.saveBasketItem(basketItemsMapper.mapToBasketItems(basketItemsDto));}
+        dbService.saveBasketItem(basketItemsMapper.mapToBasketItems(basketItemsDto));
+    }
 
     @RequestMapping(method = RequestMethod.PUT, value = "updateBasketItem")
     public BasketItemsDto updateBasketItem(@RequestBody BasketItemsDto basketItemsDto) {
-        return  basketItemsMapper.mapToBasketItemsDto(
-            dbService.saveBasketItem(basketItemsMapper.mapToBasketItems(basketItemsDto)));}
+        return basketItemsMapper.mapToBasketItemsDto(
+                dbService.saveBasketItem(basketItemsMapper.mapToBasketItems(basketItemsDto)));
+    }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "deleteBasketItem")
-    public void deleteBasketItem(@RequestParam Long basketItemId) throws ItemNotFoundException{
-        dbService.deleteBasketItems(dbService.getBasketItemsById(basketItemId).orElseThrow(ItemNotFoundException::new)); }
+    public void deleteBasketItem(@RequestParam Long basketItemId) throws ItemNotFoundException {
+        dbService.deleteBasketItems(dbService.getBasketItemsById(basketItemId).orElseThrow(ItemNotFoundException::new));
+    }
 }

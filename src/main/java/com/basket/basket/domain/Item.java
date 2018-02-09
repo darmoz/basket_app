@@ -1,7 +1,5 @@
 package com.basket.basket.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -16,7 +14,7 @@ public class Item {
     @Id
     @GeneratedValue(
             strategy = GenerationType.AUTO,
-            generator="native"
+            generator = "native"
     )
     @GenericGenerator(
             name = "native",
@@ -31,16 +29,16 @@ public class Item {
     private int unit;
 
     public Item(final long itemId, final String name, final BigDecimal price, final int unit) {
-        this.itemId=itemId;
-        this.name=name;
-        this.price=price;
-        this.unit=unit;
+        this.itemId = itemId;
+        this.name = name;
+        this.price = price;
+        this.unit = unit;
     }
 
-    public Item( final String name, final BigDecimal price, final int unit) {
-        this.name=name;
-        this.price=price;
-        this.unit=unit;
+    public Item(final String name, final BigDecimal price, final int unit) {
+        this.name = name;
+        this.price = price;
+        this.unit = unit;
     }
 
     public long getItemId() {

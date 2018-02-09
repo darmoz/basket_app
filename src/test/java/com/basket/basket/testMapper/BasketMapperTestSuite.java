@@ -3,7 +3,6 @@ package com.basket.basket.testMapper;
 import com.basket.basket.domain.Basket;
 import com.basket.basket.dto.BasketDto;
 import com.basket.basket.mapper.BasketMapperNoId;
-import com.basket.basket.mapper.BasketMapperNoId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +19,7 @@ public class BasketMapperTestSuite {
 
     @Before
     public void setup() {
-        basketMapperNoId=new BasketMapperNoId();
+        basketMapperNoId = new BasketMapperNoId();
     }
 
     @Test
