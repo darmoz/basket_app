@@ -6,6 +6,7 @@ import com.basket.basket.item.Item;
 import com.basket.basket.item.ItemDto;
 import com.basket.basket.item.ItemMapper;
 import com.google.gson.Gson;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ItemControllerTestSuite {
 
-    private final MockMvc mockMvc;
+    private final @NonNull MockMvc mockMvc;
 
     @MockBean
     private DbService dbService;
