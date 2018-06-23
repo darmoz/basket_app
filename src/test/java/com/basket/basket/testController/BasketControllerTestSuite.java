@@ -44,8 +44,17 @@ public class BasketControllerTestSuite {
     @Test
     public void testGetBasket() throws Exception {
         //given
-        BasketDto basketDto = new BasketDto(1L, BigDecimal.valueOf(10), null);
-        Basket basket = new Basket(1L, BigDecimal.valueOf(10), null);
+        BasketDto basketDto = BasketDto.builder()
+                .basketId(1L)
+                .subtotal(BigDecimal.valueOf(10))
+                .basketItemsList(null)
+                .build();
+
+        Basket basket = Basket.builder()
+                .basketId(1L)
+                .subtotal(BigDecimal.valueOf(10))
+                .basketItemsList(null)
+                .build();
 
 
         //when & then
@@ -61,8 +70,12 @@ public class BasketControllerTestSuite {
     @Test
     public void testDeleteBaskt() throws Exception {
         //given
-        BasketDto basketDto = new BasketDto(1L, BigDecimal.valueOf(1), null);
-        Basket basket = new Basket(1L, BigDecimal.valueOf(1), null);
+
+        Basket basket = Basket.builder()
+                .basketId(1L)
+                .subtotal(BigDecimal.valueOf(1))
+                .basketItemsList(null)
+                .build();
 
         when(dbService.getBasketById(basket.getBasketId())).thenReturn(Optional.ofNullable(basket));
         doNothing().when(dbService).deleteBasket(basket);
@@ -75,8 +88,17 @@ public class BasketControllerTestSuite {
     @Test
     public void testPostBasket() throws Exception {
         //given
-        Basket basket = new Basket(1L, BigDecimal.valueOf(1), null);
-        BasketDto basketDto = new BasketDto(1L, BigDecimal.valueOf(1), null);
+        BasketDto basketDto = BasketDto.builder()
+                .basketId(1L)
+                .subtotal(BigDecimal.valueOf(1))
+                .basketItemsList(null)
+                .build();
+
+        Basket basket = Basket.builder()
+                .basketId(1L)
+                .subtotal(BigDecimal.valueOf(1))
+                .basketItemsList(null)
+                .build();
 
         when(basketMapper.mapToBasket(basketDto)).thenReturn(basket);
         when(dbService.saveBasket(ArgumentMatchers.any(Basket.class))).thenReturn(basket);
@@ -92,8 +114,17 @@ public class BasketControllerTestSuite {
     @Test
     public void testPutBasket() throws Exception {
         //given
-        Basket basket = new Basket(1L, BigDecimal.valueOf(1), null);
-        BasketDto basketDto = new BasketDto(1L, BigDecimal.valueOf(1), null);
+        BasketDto basketDto = BasketDto.builder()
+                .basketId(1L)
+                .subtotal(BigDecimal.valueOf(1))
+                .basketItemsList(null)
+                .build();
+
+        Basket basket = Basket.builder()
+                .basketId(1L)
+                .subtotal(BigDecimal.valueOf(1))
+                .basketItemsList(null)
+                .build();
 
         when(basketMapper.mapToBasket(ArgumentMatchers.any(BasketDto.class))).thenReturn(basket);
         when(dbService.saveBasket(ArgumentMatchers.any(Basket.class))).thenReturn(basket);
