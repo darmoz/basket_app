@@ -2,6 +2,7 @@ package com.basket.basket.item;
 
 import com.basket.basket.dbServices.DbService;
 import com.basket.basket.exceptions.ItemNotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,12 +10,13 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping("/v1/item")
 public class ItemController {
-    @Autowired
-    private ItemMapper itemMapper;
-    @Autowired
-    private  DbService dbService;
+
+    private final ItemMapper itemMapper;
+
+    private final DbService dbService;
 
     @RequestMapping(method = RequestMethod.GET, value = "getItem")
     public ItemDto getItem(@RequestParam Long itemId) throws ItemNotFoundException {

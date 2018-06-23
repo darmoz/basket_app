@@ -6,6 +6,7 @@ import com.basket.basket.basket.Basket;
 import com.basket.basket.basket.BasketDto;
 import com.basket.basket.basket.BasketMapper;
 import com.google.gson.Gson;
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -28,11 +29,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BasketController.class)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class BasketControllerTestSuite {
 
-
-    @Autowired
-    private MockMvc mockMvc;
+    private final MockMvc mockMvc;
 
     @MockBean
     private DbService dbService;

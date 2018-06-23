@@ -6,6 +6,7 @@ import com.basket.basket.basketItem.BasketItems;
 import com.basket.basket.basketItem.BasketItemsDto;
 import com.basket.basket.basketItem.BasketItemsMapper;
 import com.google.gson.Gson;
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -27,9 +28,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(BasketItemsController.class)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class BasketItemsControllerTestSuite {
-    @Autowired
-    private MockMvc mockMvc;
+
+    private final MockMvc mockMvc;
 
     @MockBean
     private DbService dbService;
@@ -41,9 +43,15 @@ public class BasketItemsControllerTestSuite {
     @Test
     public void testGetBasketItems() throws Exception {
         //given
-        BasketItemsDto basketItemsDto = new BasketItemsDto(1L, 10);
-        BasketItems basketItems = new BasketItems(1L, 10);
+        BasketItemsDto basketItemsDto = BasketItemsDto.builder()
+                .basketItemId(1L)
+                .quantity(10)
+                .build();
 
+        BasketItems basketItems = BasketItems.builder()
+                .basketItemsId(1L)
+                .quantity(10)
+                .build();
 
         //when & then
         when(dbService.getBasketItemsById(basketItems.getBasketItemId())).thenReturn(Optional.ofNullable(basketItems));
@@ -58,8 +66,10 @@ public class BasketItemsControllerTestSuite {
     @Test
     public void testDeleteBaskt() throws Exception {
         //given
-        BasketItemsDto basketItemsDto = new BasketItemsDto(1L, 5);
-        BasketItems basketItems = new BasketItems(1L, 5);
+        BasketItems basketItems = BasketItems.builder()
+                .basketItemsId(1L)
+                .quantity(5)
+                .build();
 
         when(dbService.getBasketItemsById(basketItems.getBasketItemId())).thenReturn(Optional.ofNullable(basketItems));
         doNothing().when(dbService).deleteBasketItems(basketItems);
@@ -72,8 +82,15 @@ public class BasketItemsControllerTestSuite {
     @Test
     public void testPostBasketItems() throws Exception {
         //given
-        BasketItems basketItems = new BasketItems(1L, 20);
-        BasketItemsDto basketItemsDto = new BasketItemsDto(1L, 20);
+        BasketItemsDto basketItemsDto = BasketItemsDto.builder()
+                .basketItemId(1L)
+                .quantity(20)
+                .build();
+
+        BasketItems basketItems = BasketItems.builder()
+                .basketItemsId(1L)
+                .quantity(20)
+                .build();
 
         when(basketItemsMapper.mapToBasketItems(basketItemsDto)).thenReturn(basketItems);
         when(dbService.saveBasketItem(ArgumentMatchers.any(BasketItems.class))).thenReturn(basketItems);
@@ -89,8 +106,15 @@ public class BasketItemsControllerTestSuite {
     @Test
     public void testPutBasketItems() throws Exception {
         //given
-        BasketItems basketItems = new BasketItems(1L, 1);
-        BasketItemsDto basketItemsDto = new BasketItemsDto(1L, 1);
+        BasketItemsDto basketItemsDto = BasketItemsDto.builder()
+                .basketItemId(1L)
+                .quantity(1)
+                .build();
+
+        BasketItems basketItems = BasketItems.builder()
+                .basketItemsId(1L)
+                .quantity(1)
+                .build();
 
         when(basketItemsMapper.mapToBasketItems(ArgumentMatchers.any(BasketItemsDto.class))).thenReturn(basketItems);
         when(dbService.saveBasketItem(ArgumentMatchers.any(BasketItems.class))).thenReturn(basketItems);

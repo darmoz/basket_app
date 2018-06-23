@@ -6,6 +6,7 @@ import com.basket.basket.item.Item;
 import com.basket.basket.item.ItemDto;
 import com.basket.basket.item.ItemMapper;
 import com.google.gson.Gson;
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentMatchers;
@@ -28,9 +29,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ItemController.class)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ItemControllerTestSuite {
-    @Autowired
-    private MockMvc mockMvc;
+
+    private final MockMvc mockMvc;
 
     @MockBean
     private DbService dbService;
@@ -41,8 +43,19 @@ public class ItemControllerTestSuite {
     @Test
     public void testGetItem() throws Exception {
         //given
-        ItemDto itemDto = new ItemDto(1L, "test", BigDecimal.valueOf(1), 10);
-        Item item = new Item(1L, "test", BigDecimal.valueOf(1), 10);
+        ItemDto itemDto = ItemDto.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
+
+        Item item = Item.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
 
         //when & then
         when(dbService.getItemById(item.getItemId())).thenReturn(Optional.ofNullable(item));
@@ -59,9 +72,19 @@ public class ItemControllerTestSuite {
     @Test
     public void testDeleteItem() throws Exception {
         //given
-        //given
-        ItemDto itemDto = new ItemDto(1L, "test", BigDecimal.valueOf(1), 10);
-        Item item = new Item(1L, "test", BigDecimal.valueOf(1), 10);
+        ItemDto itemDto = ItemDto.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
+
+        Item item = Item.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
 
         when(dbService.getItemById(item.getItemId())).thenReturn(Optional.ofNullable(item));
         doNothing().when(dbService).deleteItem(item);
@@ -74,8 +97,19 @@ public class ItemControllerTestSuite {
     @Test
     public void testPostItem() throws Exception {
         //given
-        Item item = new Item(1L, "test", BigDecimal.valueOf(1), 10);
-        ItemDto itemDto = new ItemDto(1L, "test", BigDecimal.valueOf(1), 10);
+        ItemDto itemDto = ItemDto.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
+
+        Item item = Item.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
 
         when(itemMapper.mapItem(itemDto)).thenReturn(item);
         when(dbService.saveItem(ArgumentMatchers.any(Item.class))).thenReturn(item);
@@ -91,8 +125,19 @@ public class ItemControllerTestSuite {
     @Test
     public void testPutItem() throws Exception {
         //given
-        Item item = new Item(1L, "test", BigDecimal.valueOf(1), 10);
-        ItemDto itemDto = new ItemDto(1L, "test", BigDecimal.valueOf(1), 10);
+        ItemDto itemDto = ItemDto.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
+
+        Item item = Item.builder()
+                .itemId(1L)
+                .name("test")
+                .price(BigDecimal.valueOf(1))
+                .unit(10)
+                .build();
 
         when(itemMapper.mapItem(ArgumentMatchers.any(ItemDto.class))).thenReturn(item);
         when(dbService.saveItem(ArgumentMatchers.any(Item.class))).thenReturn(item);
