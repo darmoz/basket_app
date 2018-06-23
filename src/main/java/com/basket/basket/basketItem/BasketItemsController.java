@@ -2,7 +2,6 @@ package com.basket.basket.basketItem;
 
 import com.basket.basket.dbServices.DbService;
 import com.basket.basket.exceptions.ItemNotFoundException;
-import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +14,9 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @RequestMapping("/v1/basketItems")
 public class BasketItemsController {
 
-    private final @NonNull BasketItemsMapper basketItemsMapper;
+    private final BasketItemsMapper basketItemsMapper;
 
-    private final @NonNull DbService dbService;
+    private final DbService dbService;
 
     @RequestMapping(method = RequestMethod.GET, value = "getBasketItem")
     public BasketItemsDto getBasketItem(@RequestParam Long basketItemId) throws ItemNotFoundException {
