@@ -1,14 +1,16 @@
-package com.basket.basket.domain;
+package com.basket.basket.basketItem;
 
+import com.basket.basket.basket.Basket;
+import com.basket.basket.item.Item;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 
-@Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "BASKET_ITEMS")
@@ -31,16 +33,6 @@ public class BasketItems {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "itemId")
     private Item item;
-
-    public BasketItems(final long basketItemsId, final int quantity) {
-        this.basketItemsId = basketItemsId;
-        this.quantity = quantity;
-    }
-
-    public BasketItems(final int quantity) {
-        this.quantity = quantity;
-
-    }
 
     public long getBasketItemId() {
         return basketItemsId;

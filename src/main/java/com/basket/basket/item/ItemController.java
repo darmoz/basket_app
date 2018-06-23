@@ -1,9 +1,7 @@
-package com.basket.basket.controller;
+package com.basket.basket.item;
 
 import com.basket.basket.dbServices.DbService;
-import com.basket.basket.dto.ItemDto;
 import com.basket.basket.exceptions.ItemNotFoundException;
-import com.basket.basket.mapper.ItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +14,7 @@ public class ItemController {
     @Autowired
     private ItemMapper itemMapper;
     @Autowired
-    private DbService dbService;
+    private  DbService dbService;
 
     @RequestMapping(method = RequestMethod.GET, value = "getItem")
     public ItemDto getItem(@RequestParam Long itemId) throws ItemNotFoundException {

@@ -1,8 +1,8 @@
 package com.basket.basket.testMapper;
 
-import com.basket.basket.domain.Item;
-import com.basket.basket.dto.ItemDto;
-import com.basket.basket.mapper.ItemMapperNoId;
+import com.basket.basket.item.Item;
+import com.basket.basket.item.ItemDto;
+import com.basket.basket.item.ItemMapperNoId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,12 @@ public class ItemMapperTestSutie {
     @Test
     public void testItemMapperToDto() {
         //given
-        Item item = new Item("test", BigDecimal.valueOf(5), 5);
+        Item item = Item.builder()
+                .name("test")
+                .price(BigDecimal.valueOf(5))
+                .unit(5)
+                .build();
+
         //when
         ItemDto itemDto = itemMapperNoId.mapItemDto(item);
         //then
@@ -37,7 +42,11 @@ public class ItemMapperTestSutie {
     @Test
     public void testItemMapperFromDto() {
         //given
-        ItemDto itemDto = new ItemDto("test", BigDecimal.valueOf(5), 5);
+        ItemDto itemDto = ItemDto.builder()
+                .name("test")
+                .price(BigDecimal.valueOf(5))
+                .unit(5)
+                .build();
         //when
         Item item = itemMapperNoId.mapItem(itemDto);
         //then

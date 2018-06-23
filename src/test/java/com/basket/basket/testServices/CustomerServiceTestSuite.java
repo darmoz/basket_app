@@ -1,13 +1,13 @@
 package com.basket.basket.testServices;
 
-import com.basket.basket.dao.BasketDao;
-import com.basket.basket.dao.BasketItemsDao;
-import com.basket.basket.dao.ItemDao;
-import com.basket.basket.domain.Basket;
-import com.basket.basket.domain.Item;
-import com.basket.basket.dto.BasketDto;
+import com.basket.basket.basket.BasketDao;
+import com.basket.basket.basketItem.BasketItemsDao;
+import com.basket.basket.item.ItemDao;
+import com.basket.basket.basket.Basket;
+import com.basket.basket.item.Item;
+import com.basket.basket.basket.BasketDto;
 import com.basket.basket.exceptions.NoOpenBasketException;
-import com.basket.basket.mapper.BasketMapper;
+import com.basket.basket.basket.BasketMapper;
 import com.basket.basket.service.customerService.CustomerServiceImp;
 import org.junit.Assert;
 import org.junit.Test;

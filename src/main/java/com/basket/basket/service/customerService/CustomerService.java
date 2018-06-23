@@ -1,7 +1,7 @@
 package com.basket.basket.service.customerService;
 
-import com.basket.basket.domain.Basket;
-import com.basket.basket.dto.BasketDto;
+import com.basket.basket.basket.Basket;
+import com.basket.basket.basket.BasketDto;
 import com.basket.basket.exceptions.NoOpenBasketException;
 
 

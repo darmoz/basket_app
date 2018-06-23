@@ -1,9 +1,7 @@
-package com.basket.basket.controller;
+package com.basket.basket.basketItem;
 
 import com.basket.basket.dbServices.DbService;
-import com.basket.basket.dto.BasketItemsDto;
 import com.basket.basket.exceptions.ItemNotFoundException;
-import com.basket.basket.mapper.BasketItemsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

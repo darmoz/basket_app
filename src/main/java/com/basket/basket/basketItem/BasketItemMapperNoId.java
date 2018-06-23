@@ -1,7 +1,7 @@
-package com.basket.basket.mapper;
+package com.basket.basket.basketItem;
 
-import com.basket.basket.domain.BasketItems;
-import com.basket.basket.dto.BasketItemsDto;
+import com.basket.basket.basketItem.BasketItems;
+import com.basket.basket.basketItem.BasketItemsDto;
 import org.springframework.stereotype.Component;
 
 @Component

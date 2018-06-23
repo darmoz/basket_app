@@ -1,6 +1,6 @@
 package com.basket.basket.service.discount;
 
-import com.basket.basket.domain.BasketItems;
+import com.basket.basket.basketItem.BasketItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

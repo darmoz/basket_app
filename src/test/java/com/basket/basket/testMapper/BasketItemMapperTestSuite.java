@@ -1,8 +1,8 @@
 package com.basket.basket.testMapper;
 
-import com.basket.basket.domain.BasketItems;
-import com.basket.basket.dto.BasketItemsDto;
-import com.basket.basket.mapper.BasketItemMapperNoId;
+import com.basket.basket.basketItem.BasketItems;
+import com.basket.basket.basketItem.BasketItemsDto;
+import com.basket.basket.basketItem.BasketItemMapperNoId;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,9 @@ public class BasketItemMapperTestSuite {
     @Test
     public void testBasketItemMapperToDto() {
         //given
-        BasketItems basketItems = new BasketItems(20);
+        BasketItems basketItems = BasketItems.builder()
+                .quantity(20)
+                .build();
         //when
         BasketItemsDto basketItemsDto = basketItemMapperNoId.mapToBasketItemsNoIdDto(basketItems);
         //then
@@ -34,7 +36,9 @@ public class BasketItemMapperTestSuite {
     @Test
     public void testBasketItemMapperFromDto() {
         //given
-        BasketItemsDto basketItemsDto = new BasketItemsDto(20);
+        BasketItemsDto basketItemsDto = BasketItemsDto.builder()
+                .quantity(20)
+                .build();
         //when
         BasketItems basketItems = basketItemMapperNoId.mapToBasketItemsNoId(basketItemsDto);
         //then

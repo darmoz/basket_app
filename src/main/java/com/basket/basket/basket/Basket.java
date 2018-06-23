@@ -1,19 +1,17 @@
-package com.basket.basket.domain;
+package com.basket.basket.basket;
 
-
+import com.basket.basket.basketItem.BasketItems;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-@Setter
+@Builder
 @Getter
 @NoArgsConstructor
 @Entity(name = "BASKET")
@@ -39,17 +37,6 @@ public class Basket {
             fetch = FetchType.LAZY)
     private List<BasketItems> basketItemsList;
 
-    public Basket(final long basketId, final BigDecimal subtotal, final Date creationDate) {
-        this.basketId = basketId;
-        this.subtotal = subtotal;
-        this.creationDate = creationDate;
-        basketItemsList = new ArrayList<>();
-    }
-
-    public Basket(final Date creationDate) {
-        this.creationDate = creationDate;
-        basketItemsList = new ArrayList<>();
-    }
 
     public long getBasketId() {
         return basketId;

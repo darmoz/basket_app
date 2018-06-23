@@ -1,10 +1,10 @@
 package com.basket.basket.testController;
 
-import com.basket.basket.controller.BasketController;
+import com.basket.basket.basket.BasketController;
 import com.basket.basket.dbServices.DbService;
-import com.basket.basket.domain.Basket;
-import com.basket.basket.dto.BasketDto;
-import com.basket.basket.mapper.BasketMapper;
+import com.basket.basket.basket.Basket;
+import com.basket.basket.basket.BasketDto;
+import com.basket.basket.basket.BasketMapper;
 import com.google.gson.Gson;
 import org.junit.Test;
 import org.junit.runner.RunWith;

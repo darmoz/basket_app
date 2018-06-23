@@ -1,14 +1,14 @@
 package com.basket.basket.service.customerService;
 
-import com.basket.basket.dao.BasketDao;
-import com.basket.basket.dao.ItemDao;
-import com.basket.basket.domain.Basket;
-import com.basket.basket.domain.BasketItems;
-import com.basket.basket.domain.Item;
-import com.basket.basket.dto.BasketDto;
+import com.basket.basket.basket.BasketDao;
+import com.basket.basket.item.ItemDao;
+import com.basket.basket.basket.Basket;
+import com.basket.basket.basketItem.BasketItems;
+import com.basket.basket.item.Item;
+import com.basket.basket.basket.BasketDto;
 import com.basket.basket.exceptions.NoOpenBasketException;
-import com.basket.basket.mapper.BasketItemMapperNoId;
-import com.basket.basket.mapper.BasketMapper;
+import com.basket.basket.basketItem.BasketItemMapperNoId;
+import com.basket.basket.basket.BasketMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

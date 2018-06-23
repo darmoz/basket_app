@@ -1,7 +1,7 @@
 package com.basket.basket.testDao;
 
-import com.basket.basket.dao.ItemDao;
-import com.basket.basket.domain.Item;
+import com.basket.basket.item.ItemDao;
+import com.basket.basket.item.Item;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

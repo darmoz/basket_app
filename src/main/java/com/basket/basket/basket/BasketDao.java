@@ -1,6 +1,5 @@
-package com.basket.basket.dao;
+package com.basket.basket.basket;
 
-import com.basket.basket.domain.Basket;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

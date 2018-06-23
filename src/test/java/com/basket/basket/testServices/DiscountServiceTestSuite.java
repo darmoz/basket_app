@@ -1,8 +1,8 @@
 package com.basket.basket.testServices;
 
-import com.basket.basket.domain.Basket;
-import com.basket.basket.domain.BasketItems;
-import com.basket.basket.domain.Item;
+import com.basket.basket.basket.Basket;
+import com.basket.basket.basketItem.BasketItems;
+import com.basket.basket.item.Item;
 import com.basket.basket.service.discount.*;
 import org.junit.Assert;
 import org.junit.Test;

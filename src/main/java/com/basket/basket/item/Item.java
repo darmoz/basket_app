@@ -1,5 +1,6 @@
-package com.basket.basket.domain;
+package com.basket.basket.item;
 
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -7,7 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Setter
+@Builder
 @NoArgsConstructor
 @Entity(name = "ITEMS")
 public class Item {
@@ -28,18 +29,6 @@ public class Item {
     @Column(name = "UNIT")
     private int unit;
 
-    public Item(final long itemId, final String name, final BigDecimal price, final int unit) {
-        this.itemId = itemId;
-        this.name = name;
-        this.price = price;
-        this.unit = unit;
-    }
-
-    public Item(final String name, final BigDecimal price, final int unit) {
-        this.name = name;
-        this.price = price;
-        this.unit = unit;
-    }
 
     public long getItemId() {
         return itemId;
