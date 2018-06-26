@@ -13,12 +13,16 @@ import java.util.Optional;
 
 @Service
 public class DbService {
-    @Autowired
+
     private ItemDao itemDao;
-    @Autowired
     private BasketItemsDao basketItemsDao;
-    @Autowired
     private BasketDao basketDao;
+
+    public DbService(ItemDao itemDao, BasketItemsDao basketItemsDao, BasketDao basketDao) {
+        this.itemDao = itemDao;
+        this.basketItemsDao = basketItemsDao;
+        this.basketDao = basketDao;
+    }
 
     public Optional<Item> getItemById(Long id) {
         return itemDao.findById(id);

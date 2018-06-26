@@ -7,11 +7,9 @@ import com.basket.basket.basketItem.BasketItems;
 import com.basket.basket.item.Item;
 import com.basket.basket.basket.BasketDto;
 import com.basket.basket.exceptions.NoOpenBasketException;
-import com.basket.basket.basketItem.BasketItemMapperNoId;
 import com.basket.basket.basket.BasketMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,18 +21,18 @@ public class CustomerServiceImp implements CustomerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceImp.class);
 
-    @Autowired
     private BasketDao basketDao;
-    @Autowired
     private BasketMapper basketMapper;
-    @Autowired
-    private BasketItemMapperNoId basketItemMapperNoId;
-    @Autowired
     private ItemDao itemDao;
-
     private Basket basket;
-
     private boolean basketIsOpen = false;
+
+    public CustomerServiceImp(BasketDao basketDao, BasketMapper basketMapper, ItemDao itemDao, Basket basket) {
+        this.basketDao = basketDao;
+        this.basketMapper = basketMapper;
+        this.itemDao = itemDao;
+        this.basket = basket;
+    }
 
     @Override
     public Basket saveBasket(BasketDto basketdto) {
@@ -50,9 +48,11 @@ public class CustomerServiceImp implements CustomerService {
         if (basketIsOpen) {
             Optional<Item> item = itemDao.findByName(itemName);
 
-            BasketItems basketItems = new BasketItems(quantity);
-            basketItems.setBasket(basket);
-            basketItems.setItem(item.get());
+            BasketItems basketItems = BasketItems.builder()
+                    .quantity(quantity)
+                    .build();
+            basketItems.getBasket().getBasketItemsList().add(basketItems);
+            basketItems.setItem(item);
 
             basket.getBasketItemsList().add(basketItems);
             return basketDao.save(basket);

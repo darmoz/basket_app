@@ -1,7 +1,5 @@
 package com.basket.basket.basket;
 
-import com.basket.basket.basket.Basket;
-import com.basket.basket.basket.BasketDto;
 
 public class BasketMapperNoId {
 

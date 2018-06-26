@@ -6,14 +6,17 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "BASKET_ITEMS")
+@Component
 public class BasketItems {
     @Id
     @GeneratedValue(
@@ -32,7 +35,7 @@ public class BasketItems {
     private Basket basket;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "itemId")
-    private Item item;
+    private Optional<Optional<Item>> item;
 
     public long getBasketItemId() {
         return basketItemsId;
@@ -46,7 +49,11 @@ public class BasketItems {
         return basket;
     }
 
-    public Item getItem() {
-        return item;
+    public Optional<Optional<Optional<Item>>> getItem() {
+        return Optional.of(item);
+    }
+
+    public void setItem(Optional<Item> item) {
+        this.item = Optional.of(item);
     }
 }

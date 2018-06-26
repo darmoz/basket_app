@@ -1,6 +1,5 @@
 package com.basket.basket.item;
 
-import com.basket.basket.item.Item;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

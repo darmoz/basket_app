@@ -1,7 +1,5 @@
 package com.basket.basket.item;
 
-import com.basket.basket.item.Item;
-import com.basket.basket.item.ItemDto;
 import org.springframework.stereotype.Component;
 
 @Component
